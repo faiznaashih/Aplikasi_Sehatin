@@ -193,9 +193,6 @@ fun DailyOverviewCard(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.End
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.doctor), contentDescription = ""
-                )
             }
         }
     }
@@ -226,13 +223,15 @@ fun EmptyCard(
         }
     ) {
         Row(modifier = Modifier.fillMaxSize()) {
+
             Column(
                 modifier = Modifier
-                    .padding(24.dp, 24.dp, 0.dp, 16.dp)
-                    .fillMaxWidth(.50F)
-                    .align(Alignment.CenterVertically),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                    .padding(24.dp) // <-- Padding dibuat simpel
+                    .fillMaxWidth(), // <-- Hapus .50F biar lebarnya penuh
+                verticalArrangement = Arrangement.Center, // <-- Biar center vertikal
+                horizontalAlignment = Alignment.CenterHorizontally // <-- TAMBAHKAN INI biar center horizontal
             ) {
+
 
                 Text(
                     text = stringResource(R.string.medication_break),
@@ -251,9 +250,7 @@ fun EmptyCard(
                 horizontalArrangement = Arrangement.End,
                 verticalAlignment = Alignment.Bottom
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.doctor), contentDescription = ""
-                )
+
             }
         }
     }

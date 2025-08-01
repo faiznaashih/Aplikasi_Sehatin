@@ -304,23 +304,6 @@ fun AddMedicationScreen(
 
             Spacer(modifier = Modifier.padding(4.dp))
 
-            TextField(
-                modifier = Modifier.fillMaxWidth(),
-                value = numberOfDosage,
-                onValueChange = {
-                    if (it.isEmpty() || it.toIntOrNull() != null) {
-                        if (it.toIntOrNull() ?: 0 <= 3) {
-                            numberOfDosage = it
-                        }
-                    }
-                },
-                label = { Text(stringResource(id = R.string.dose_optional)) },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                placeholder = { Text(stringResource(R.string.dosage_hint)) },
-                singleLine = true,
-            )
-
-            Spacer(modifier = Modifier.padding(4.dp))
 
             Column {
                 Text(
@@ -335,11 +318,11 @@ fun AddMedicationScreen(
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(250.dp)
+                        .height(170.dp) // Ubah tingginya biar pas
                         .padding(horizontal = 0.dp),
                     userScrollEnabled = false
                 ) {
-                    items(MedicationType.entries) { type ->
+                    items(MedicationType.entries.filter { it != MedicationType.DROPS && it != MedicationType.SPRAY && it != MedicationType.GEL }) { type ->
                         MedicationTypeBox(
                             type = type,
                             isSelected = type == medicationType,
